@@ -1,0 +1,74 @@
+#include <Adafruit_NeoPixel.h>
+
+
+#define LED_PIN    4
+ 
+// How many NeoPixels are attached to the Arduino?
+#define LED_COUNT 8
+
+int stav1 = 1; // Red
+int stav2 = 2; //Orange
+int stav3 = 3; // green
+int stav4 = 4; // Orange?
+int currentState;
+ 
+// Declare our NeoPixel strip object:
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+void setup() 
+{
+  Serial.begin(9600);
+}
+
+void loop() 
+{
+  strip.begin();
+  strip.show();
+  
+  time = milis();
+}
+
+void Update()
+{
+  switch(currentState)
+  {
+    case 1:
+    for(int i = 0; i < 8; i++)
+    {
+      strip.setPixelColor(i, strip.Color(255,0,0));
+    }
+    break;
+
+    case 2:
+    for(int i = 0; i < 8; i++)
+    {
+      strip.setPixelColor(i, strip.Color(255,127,80));
+    }
+    break;
+
+    case 2:
+    for(int i = 0; i < 8; i++)
+    {
+      strip.setPixelColor(i, strip.Color(255,127,80));
+    }
+    break;
+
+    case 3:
+    for(int i = 0; i < 8; i++)
+    {
+      strip.setPixelColor(i, strip.Color(0,255,0));
+    }
+    break;
+
+    case 4:
+    for(int i = 0; i < 8; i++)
+    {
+      strip.setPixelColor(i, strip.Color(255,127,80));
+    }
+    break;
+
+    default:
+    break;
+    
+  }  
+}
