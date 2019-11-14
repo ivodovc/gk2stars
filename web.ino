@@ -106,12 +106,12 @@ void loop(){
             client.println("<body><h1>ESP8266 Web Server</h1>");
             
             // Display current state, and ON/OFF buttons for GPIO 5  
-            client.println("<p>GPIO 5 - State " + output5State + "</p>");
+            client.println("<p> Tlacidlo na ledku </p>");
             // If the output5State is off, it displays the ON button       
               client.println("<p><a href=\"/5/180\"><button class=\"button button2\">Zasvietiť</button></a></p>");
                
             // Display current state, and ON/OFF buttons for GPIO 4  
-            client.println("<p>GPIO 4 - State " + output4State + "</p>");
+            client.println("<p>Dalsie tlacidlo na ledku</p>");
             // If the output4State is off, it displays the ON button       
              client.println("<p><a href=\"/5/r\"><button class=\"button\">Zhasni</button></a></p>");
             client.println("</body></html>");
