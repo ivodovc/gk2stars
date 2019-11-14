@@ -4,8 +4,8 @@
 #include <Servo.h>
 
 // Replace with your network credentials
-const char* ssid     = "GK2iot";
-const char* password = "Arduino.2019";
+const char* ssid     = "GL-Students";
+const char* password = "123wifinet321";
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -77,18 +77,18 @@ void loop(){
             if (header.indexOf("GET /5/r") >= 0) {
               Serial.println("GPIO 5 on");
               servo.write(0);
+              digitalWrite(LED_BUILTIN, HIGH);
             } else if (header.indexOf("GET /5/180") >= 0) {
               Serial.println("GPIO 5 off");
               servo.write(180);
               digitalWrite(output5, LOW);
+              digitalWrite(LED_BUILTIN, LOW);
             } else if (header.indexOf("GET /4/on") >= 0) {
               Serial.println("GPIO 4 on");
               output4State = "on";
-              digitalWrite(output4, HIGH);
             } else if (header.indexOf("GET /4/off") >= 0) {
               Serial.println("GPIO 4 off");
               output4State = "off";
-              digitalWrite(output4, LOW);
             }
             
             // Display the HTML web page
@@ -108,12 +108,12 @@ void loop(){
             // Display current state, and ON/OFF buttons for GPIO 5  
             client.println("<p>GPIO 5 - State " + output5State + "</p>");
             // If the output5State is off, it displays the ON button       
-              client.println("<p><a href=\"/5/180\"><button class=\"button button2\">Otoc na 1800</button></a></p>");
+              client.println("<p><a href=\"/5/180\"><button class=\"button button2\">Zasvietiť</button></a></p>");
                
             // Display current state, and ON/OFF buttons for GPIO 4  
             client.println("<p>GPIO 4 - State " + output4State + "</p>");
             // If the output4State is off, it displays the ON button       
-             client.println("<p><a href=\"/5/r\"><button class=\"button\">Otoc na 0</button></a></p>");
+             client.println("<p><a href=\"/5/r\"><button class=\"button\">Zhasni</button></a></p>");
             client.println("</body></html>");
             
             // The HTTP response ends with another blank line
